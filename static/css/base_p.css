@@ -1,0 +1,249 @@
+*{
+    margin:0px;
+    padding:0;
+    box-sizing: border-box;
+}
+html,
+body{
+    height:100%;
+    width:100%;
+    overflow-x:hidden;
+    background-size: cover;
+    color:black;
+}
+
+a{
+    text-decoration: none;
+    cursor: pointer;
+    color:black;
+}
+
+/* Navigation Bar */
+.navbar{
+    position:fixed;
+    width:100%;
+    height:70px;
+}
+.navbar--head{
+    display:block;
+    width:100%;
+    height:70px;
+    font-size: 35px;
+    font-weight:600;
+    padding: 10px 20px;
+    align-content: center;
+}
+.heading{
+    height:50px;
+    float: left;
+}
+.text{
+    /*! padding: 4px; */
+    margin: 0px 10px;
+    color: green;
+    font-size: 44px;
+}
+.searchbar{
+    height:50px;
+    width:450px;
+    padding: 3px 25px;
+    display: grid;
+    grid-auto-flow: column;
+    float: right;
+    margin-right: 60px;
+}
+.search{
+    width: 400px;
+    padding: 10px 15px;
+    font-size: 18px;
+}
+.searchbtn{
+    background: orangered;
+    font-size: 20px;
+    padding: 2px 10px;
+    color:white;
+    border: 1px solid black;
+}
+.searchbtn:hover{
+    background: green;
+}
+.nav--right{
+    display:block;
+    float:right;
+    margin: 0px 3px;
+}
+.login{
+    float:right;
+    text-align:center;
+    font-size:20px;
+    width:120px;
+    padding:5px 20px;
+    border: 0px;
+    border-radius: 12px 0px;
+    background: green;
+    color: white;
+    margin: 5px;
+    cursor: pointer;
+}
+.login:hover{
+    background: orangered;
+    color:white;
+}
+
+/* .signup{
+    float: right;
+    font-size:20px;
+    width:120px;
+    padding:5px 20px;
+    border:0px;
+    border-radius: 12px 0px;
+    background: green;
+    color:white;
+    margin:5px;
+    cursor: pointer;
+} */
+
+.topnav{
+    display:block;
+    position:relative;
+    background-color:#fdfafa;
+    padding: 0px 50px;
+    box-shadow: 0px 3px 5px #dddddd;
+    float: left;
+    width: 100%;
+}
+.links{
+    height:40px;
+    overflow: hidden;
+    font-size:20px;
+    list-style: none;
+    display: block;
+    float: left;
+}
+.links>li{
+    display:block;
+    padding:5px;
+    width:150px;
+    text-align: center;
+    color: green;
+    float: left;
+}
+.links>li>a{
+    color: inherit;
+}
+.icons{
+    width:25px;
+    height:25px;
+}
+.icons-h{
+    width:25px;
+    height:25px;
+    display: none;
+}
+.links>li:hover{
+    background-color: green;
+    color: white;
+}
+.links>li:hover .icons{
+    display: none;
+}
+.links>li:hover .icons-h{
+    display: initial;
+}
+.icon{
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    z-index: 10;
+}
+.icon i {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background: #ffffff;
+    border-radius: 2px;
+    margin-top: 4px;
+}
+
+
+/* For Mobile */
+@media screen and (max-width:1024px){
+    .navbar{
+        height:70x;
+        box-shadow: 0px 3px 3px #dddddd;
+    }
+    .navbar--head{
+        padding:10px;
+    }
+    .heading{
+        height: 50px;
+        float: left;
+    }
+    .text{
+        margin: 0px;
+        font-size: 35px;
+    }
+    .searchbar{
+        height: 40px;
+        width: 165px;
+        padding: 5px;
+        margin-right: 5px;
+    }
+    .search{
+        display: block;
+        width:120px;
+        font-size: 15px;
+    }
+    .searchbtn{
+        background-color: orangered;
+        font-size: 20px;
+        padding: 0px 10px;
+        color:white;
+        border: 1px solid black;
+    }
+    .topnav{
+        display:block;
+        position:fixed;
+        bottom:0;
+        padding:0px;
+        float: left;
+        width: 100%;
+        box-shadow: 0px -3px 5px #dddddd;
+    }
+    .links{
+        height:70px;
+        font-size:15px;
+        list-style: none;
+        float: left;
+        width:80%;
+    }
+    .links>li{
+        display:block;
+        padding:5px;
+        width:25%;
+        height:100px;
+        float: left;
+    }
+    .links>li>a>span{
+        display: block;
+    }
+    .nav--right{
+        display:block;
+        float:right;
+        height:70px;
+        width:20%;
+        margin:0px;
+    }
+    .login{
+        font-size:15px;
+        width:90%;
+        padding:5px;
+        margin: 5px;
+    }
+/*     .signup{
+        font-size:15px;
+        width:90%;
+        padding:5px;
+        margin: 5px;
+    } */
+}

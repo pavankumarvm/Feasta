@@ -1,0 +1,333 @@
+<style>
+    body {
+        background-color: rgb(244, 244, 244);
+    }
+
+    #top {
+        background-color: rgb(255, 255, 255);
+        position: fixed;
+        width: 100%;
+        border-bottom: .1px solid #e6e2e2;
+        top: 0;
+        left: 0;
+        z-index: 100;
+    }
+
+    .navbar {
+        display: grid;
+        grid-auto-flow: column;
+        height: 55px;
+    }
+
+    .navbar .logo {
+        display: grid;
+        grid-auto-flow: column;
+        grid-template-columns: 45px 150px;
+        /* grid-template-columns: 150px; */
+        grid-gap: 1em;
+        align-items: center;
+        margin-left: 3em;
+    }
+
+    .logo img {
+        width: 100%;
+        z-index: -1;
+    }
+
+    a {
+        color: rgb(74, 82, 72) !important;
+        text-decoration: none;
+    }
+
+    ul {
+        list-style-type: none;
+    }
+
+    .desktop-nav.left {
+        display: grid;
+        align-content: center;
+        margin-right: 3em;
+    }
+
+    .desktop-nav.left ul {
+        display: grid;
+        grid-auto-flow: column;
+        justify-content: end;
+        text-align: center;
+        grid-template-columns: repeat(2, 100px);
+    }
+
+    .link {
+        color: rgb(74, 82, 72);
+        font-size: 20px;
+        padding: 4px;
+    }
+
+    .link.four {
+        background: rgba(0, 0, 0, 0);
+        border: 1px solid rgb(205, 205, 203);
+        border-radius: 50px;
+        padding: 4px;
+    }
+
+    /* main content */
+    main {
+        margin-top: 3em;
+    }
+
+    .top-container {
+        position: relative;
+    }
+
+    .top-container .img {
+        height: 320px;
+    }
+
+    .top-container .arrow svg {
+        position: absolute;
+        transform: rotate(180deg);
+        background-color: rgb(255, 255, 255);
+        padding: 8px 8px;
+        left: 40px;
+        top: -308px;
+        border-radius: 50px;
+        transition: all 0.3s ease;
+    }
+
+    .top-container .arrow svg:hover {
+        box-shadow: 0px -2px 6px 5px #0000001f;
+    }
+
+    .mess {
+        background: rgb(255, 255, 255);
+        width: 40%;
+        padding: 20px 20px;
+        position: relative;
+        top: -65px;
+        margin: 0 auto;
+        border-radius: 4px;
+        box-shadow: 2px 2px 6px 6px #b0adad1f;
+    }
+
+    .mess h1 {
+        font-size: 40px;
+    }
+
+    .mess p {
+        margin: 3px 0;
+        color: rgb(119, 120, 120);
+    }
+
+    .menu-container {
+        margin: 0 auto;
+        width: 45%;
+        background: rgb(255, 255, 255);
+        padding: 8px 12px;
+        margin-bottom: 20px;
+        margin-top: -24px;
+        box-shadow: 0px 2px 3px 2px #d7d7cc5e;
+    }
+
+    .menu ul li {
+        list-style-type: upper-latin;
+        margin-left: 19px;
+        margin: 10px 0px 3px 26px;
+    }
+
+
+    .cost-container {
+        padding: 20px 20px;
+        margin: 0 auto;
+        width: 43%;
+        color: rgb(255, 255, 255);
+        margin-top: 5px;
+        margin-bottom: 30px;
+        display: grid;
+        grid-auto-flow: column;
+        grid-gap: 10px;
+    }
+
+    .cost-container h3 {
+        background: rgb(33, 168, 39);
+        /* text-align: center; */
+        padding: 10px 10px;
+        border-radius: 4px;
+    }
+
+    #bottom {
+        display: none;
+    }
+
+    @media only screen and (max-width: 768px) {
+        #top {
+            display: none;
+        }
+
+        main {
+            margin-top: 0;
+        }
+
+        .navbar .logo {
+            grid-template-columns: 45px auto !important;
+            margin-left: 1em !important;
+        }
+
+        .mess {
+            width: auto;
+        }
+
+        .menu-container {
+            width: auto;
+            top: -65px;
+            margin-left: 4px;
+            margin-right: 4px;
+            margin-top: -30px;
+        }
+
+        .cost-container {
+            grid-auto-flow: row;
+            width: auto;
+            margin: 5px 4px 5px 4px;
+        }
+
+        .top-container .arrow svg {
+            top: -325px;
+            left: 15px;
+        }
+
+        /*mobile bottom nav*/
+        #bottom {
+            display: grid;
+            bottom: 0;
+            background-color: rgb(240, 238, 236);
+            position: fixed;
+            width: 100%;
+            border-top: 1px solid rgb(230, 226, 226);
+            left: 0;
+            z-index: 100;
+        }
+
+        .navbar-bottom {
+            display: grid;
+            grid-auto-flow: column;
+            height: 55px;
+            align-items: center;
+        }
+
+        .navbar-bottom a {
+            justify-self: center;
+        }
+
+
+        .icon.active path {
+            fill: rgb(86, 190, 18);
+        }
+    }
+</style>
+<header id="top">
+    <nav class="navbar">
+        <a href="/" style="align-self: center;">
+            <div class="logo">
+                <img src="static/img/logo/logo1.png" alt="brand logo">
+                <h1 class="name">Feasta</h1>
+            </div>
+        </a>
+
+        <div class="desktop-nav left">
+            <ul>
+                <li class="link three">
+                    <a href="#">
+                        Login
+                    </a>
+                </li>
+                <li class="link four">
+                    <a href="#">
+                        Signup
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+<header id="bottom">
+    <nav class="navbar-bottom">
+        <a href="/home/">
+            <div class="icon active">
+                <svg width="30" height="30" viewBox="0 0 24 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M9.49719 20.1594V13.9094H14.4972V20.1594C14.4972 20.8469 15.0597 21.4094 15.7472 21.4094H19.4972C20.1847 21.4094 20.7472 20.8469 20.7472 20.1594V11.4094H22.8722C23.4472 11.4094 23.7222 10.6969 23.2847 10.3219L12.8347 0.909372C12.3597 0.484372 11.6347 0.484372 11.1597 0.909372L0.709693 10.3219C0.284693 10.6969 0.547193 11.4094 1.12219 11.4094H3.24719V20.1594C3.24719 20.8469 3.80969 21.4094 4.49719 21.4094H8.24719C8.93469 21.4094 9.49719 20.8469 9.49719 20.1594Z"
+                        fill="#BABABA" />
+                </svg>
+
+            </div>
+        </a>
+        <a href="/favorite">
+            <div class="icon">
+                <svg width="30" height="30" viewBox="0 0 26 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M14.6872 22.384C13.7372 23.2465 12.2747 23.2465 11.3247 22.3715L11.1872 22.2465C4.62466 16.309 0.337157 12.4215 0.499657 7.57151C0.574657 5.44651 1.66216 3.40901 3.42466 2.20901C6.72466 -0.0409944 10.7997 1.00901 12.9997 3.58401C15.1997 1.00901 19.2747 -0.0534943 22.5747 2.20901C24.3372 3.40901 25.4247 5.44651 25.4997 7.57151C25.6747 12.4215 21.3747 16.309 14.8122 22.2715L14.6872 22.384Z"
+                        fill="black" fill-opacity="0.54" />
+                </svg>
+
+            </div>
+        </a>
+        <a href="/account">
+            <div class="icon">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M15 5C15 7.7625 12.7625 10 10 10C7.2375 10 5 7.7625 5 5C5 2.2375 7.2375 0 10 0C12.7625 0 15 2.2375 15 5ZM0 17.5C0 14.175 6.6625 12.5 10 12.5C13.3375 12.5 20 14.175 20 17.5V18.75C20 19.4375 19.4375 20 18.75 20H1.25C0.5625 20 0 19.4375 0 18.75V17.5Z"
+                        fill="black" fill-opacity="0.54" />
+                </svg>
+
+            </div>
+        </a>
+
+    </nav>
+</header>
+
+<main>
+    <div class="top-container">
+        <div class="img"
+            style="background-image:linear-gradient(190deg, rgba(43, 40, 40, 0.16), rgba(22, 21, 21, 0.24)),url(static/img/mess/0d98a49….jpg),url(static/img/mess/{{Mess.profile_img}});background-repeat: no-repeat; background-size: cover;">
+        </div>
+        <span class="arrow">
+            <a href="/home/">
+                <svg viewBox="0 0 24 24" fill="#494949" aria-hidden="true" height="24" width="24"
+                    style="flex-shrink: 0;">
+                    <title></title>
+                    <path
+                        d="M12.293 17.293a1 1 0 0 0 1.414 1.414l5.45-5.45c.085-.085.186-.185.267-.281.094-.111.22-.28.296-.513a1.5 1.5 0 0 0 0-.926 1.506 1.506 0 0 0-.296-.513c-.081-.096-.182-.196-.266-.28l-5.45-5.451a1 1 0 1 0-1.415 1.414L16.586 11H5a1 1 0 1 0 0 2h11.586l-4.293 4.293z"
+                        fill="#000000">
+                    </path>
+                </svg>
+            </a>
+        </span>
+    </div>
+
+
+    <div class="mess-container">
+        <div class="mess">
+            <h1>{{Mess.mess_name}}</h1>
+            <p>Address : {{Mess.address}}</p>
+            <p>Timing : {{Mess.timing}}</p>
+        </div>
+    </div>
+
+
+    <div class="menu-container">
+        <h1>Today's Exclusive Menu</h1>
+        <div class="menu">
+            <ul>
+                <li ng-repeat="menu in Menu">
+                    {{menu.item}}
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="cost-container">
+        <h3>One time: &#x20b9; {{Mess.one_time}} | Per Person</h3>
+        <h3>Monthly: &#x20b9; {{Mess.monthly}} | Per Person</h3>
+    </div>
+</main>

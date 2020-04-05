@@ -1,0 +1,287 @@
+<style>
+    .hero {
+        background-image: linear-gradient(190deg, rgba(43, 40, 40, 0.43), rgba(22, 21, 21, 0.68)), url(static/img/hero/dinner.jpg);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 570px;
+    }
+
+    .hero-container {
+        display: grid;
+    }
+
+    #header-top {
+        margin-top: 10px;
+    }
+
+    .navbar-desktop {
+        display: grid;
+        grid-auto-flow: column;
+        grid-template-columns: 10% 1fr 230px;
+    }
+
+    .navbar-desktop .logo {
+        display: grid;
+        grid-auto-flow: column;
+        grid-template-columns: 100px 200px;
+        justify-content: center;
+        align-items: center;
+        grid-gap: 10px;
+    }
+
+    .logo>img {
+        width: 100%;
+        border-radius: 50%;
+    }
+
+    .brand-name {
+        font-size: 52px;
+        color: white;
+        text-shadow: 3px 3px #2d29292b;
+    }
+
+    .navbar-desktop .left .link {
+        list-style-type: none;
+        display: grid;
+        grid-auto-flow: column;
+        align-items: center;
+    }
+
+    .navbar-desktop .left {
+        display: grid;
+        align-items: center;
+        margin-right: 10px;
+    }
+
+    .link li {
+        justify-self: center;
+    }
+
+    li a {
+        color: white;
+        font-size: 20px;
+    }
+
+    .left .link .signup {
+        background-color: white;
+        border-radius: 50px;
+        padding: 8px 16px;
+    }
+
+    .signup a {
+        color: rgb(73, 73, 73) !important;
+    }
+
+    .link .signup:hover {
+        background-color: rgb(247, 247, 247);
+    }
+
+    /* -------- hero text -------------*/
+
+    .hero-text {
+        text-align: center;
+        font-size: 30px;
+        margin-top: 80px;
+        color: rgb(255, 255, 255);
+        text-shadow: 3px 2px 6px #00000075;
+    }
+
+    .go {
+        display: flex;
+        justify-content: center;
+        margin-top: 50px;
+    }
+
+    .btn {
+        padding: 8px 20px;
+        background: rgb(37, 198, 75);
+        border-radius: 2px;
+        transition: all .2s ease;
+    }
+
+    .btn:hover {
+        background: rgb(25, 156, 56);
+    }
+
+    span.btn-text {
+        font-size: 22px;
+        color: rgb(255, 255, 255);
+    }
+
+    span.arrow {
+        position: relative;
+        top: 5px;
+        right: 1px;
+        display: inline-block;
+        transform: translateX(0);
+        transition: transform .4s ease-out;
+    }
+
+    .btn:hover .arrow {
+        transform: translateX(5px);
+    }
+
+    /* --- main content ---*/
+
+    .how {
+        display: grid;
+        grid-auto-flow: column;
+        grid-gap: 40px;
+        margin: 60px 60px 0 60px;
+    }
+
+    .card {
+        display: grid;
+        grid-template-rows: 300px auto;
+        width: 350px;
+        text-align: center;
+    }
+
+    .card span {
+        padding: 12px 12px;
+    }
+
+    .card span h2 {
+        color: #262121;
+        font-size: 30px;
+    }
+
+    .card span p {
+        color: #616668;
+        font-size: 15px;
+        font-weight: lighter;
+        line-height: 24px;
+    }
+
+    .card>img {
+        width: 100%;
+    }
+
+    .about {
+        background-color: #eee;
+    }
+
+    @media only screen and (max-width: 768px) {
+        .navbar-desktop .logo {
+            grid-template-columns: 71px 200px !important;
+        }
+
+        .navbar-desktop .left {
+            margin-right: 0;
+            margin-left: 8px;
+        }
+
+        .navbar-desktop {
+            grid-auto-flow: row;
+            grid-template-columns: none !important;
+        }
+
+        .navbar-desktop .left {
+            margin-top: 15px;
+        }
+
+        .hero-text {
+            margin-top: 15px;
+        }
+
+        .hero-text h1 {
+            line-height: 67px;
+        }
+
+        .how {
+            grid-auto-flow: row;
+            margin: 0 0 60px 0;
+            justify-content: center;
+        }
+    }
+
+</style>
+<div class="hero">
+    <div class="hero-container">
+        <header id="header-top">
+            <nav class="navbar-desktop">
+                <div class="spacer"></div>
+                <a href="/">
+                    <div class="logo">
+                        <img ng-src="static/img/logo/logo1.png">
+                        <h1 class="brand-name">Feasta</h1>
+                    </div>
+                </a>
+
+                <div class="left">
+                    <ul class="link">
+                        <li>
+                            <a href="/login">Login</a>
+                        </li>
+                        <li class="signup">
+                            <a href="/signup">signup</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <div class="hero-text">
+            <h1>Feeling Hungry?</h1>
+            <p>See what has been cooked in nearby mess</p>
+        </div>
+        <div class="go">
+            <a href="/home/">
+                <div class="btn">
+                    <span class="btn-text">Lets Go</span>
+                    <span class="arrow">
+                        <svg viewBox="0 0 24 24" fill="#494949" aria-hidden="true" height="24" width="24"
+                            style="flex-shrink: 0;">
+                            <title></title>
+                            <path
+                                d="M12.293 17.293a1 1 0 0 0 1.414 1.414l5.45-5.45c.085-.085.186-.185.267-.281.094-.111.22-.28.296-.513a1.5 1.5 0 0 0 0-.926 1.506 1.506 0 0 0-.296-.513c-.081-.096-.182-.196-.266-.28l-5.45-5.451a1 1 0 1 0-1.415 1.414L16.586 11H5a1 1 0 1 0 0 2h11.586l-4.293 4.293z"
+                                fill="#ffffff">
+                            </path>
+                        </svg>
+                    </span>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+<section class="how">
+    <div class="card">
+        <img ng-src="static/img/touch.jpg">
+        <span>
+            <h2>Search Nearby Mess</h2>
+            <p>Know what's cooking in nearby mess at your fingertips.</p>
+        </span>
+    </div>
+
+    <div class="card">
+        <img ng-src="static/img/discount.jpg">
+        <span>
+            <h2>Exclusive Offer's</h2>
+            <p>Get exclusive offers on subscription.</p>
+        </span>
+    </div>
+
+    <div class="card">
+        <img ng-src="static/img/money.png">
+        <span>
+            <h2>Save time & money</h2>
+            <p>Don't waste your time going to diffrent mess, get all menu at your fingertips with
+                Feasta only offers.</p>
+        </span>
+    </div>
+
+</section>
+<section class="about">
+    <div class="wrapper">
+        <h1>About Us</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. A dolores consequuntur id, ratione nemo repellat
+            tenetur voluptatem officia consequatur cupiditate est numquam velit voluptatum, autem eligendi.
+            Excepturi
+            aspernatur incidunt cupiditate!</p>
+    </div>
+</section>
+<!-- <div>
+        Hungry?
+        See what has been cooked in nearby mess.
+        Choose your favourite Menu and then head towards the mess.
+    </div> -->

@@ -1,0 +1,437 @@
+<style>
+    body {
+        background-color: rgb(244, 244, 244);
+    }
+
+    #top {
+        background-color: rgb(255, 255, 255);
+        position: fixed;
+        width: 100%;
+        border-bottom: .1px solid #e6e2e2;
+        top: 0;
+        left: 0;
+        z-index: 100;
+    }
+
+    .navbar {
+        display: grid;
+        grid-auto-flow: column;
+        height: 55px;
+    }
+
+    .navbar .logo {
+        display: grid;
+        grid-auto-flow: column;
+        grid-template-columns: 45px 150px;
+        /* grid-template-columns: 150px; */
+        grid-gap: 1em;
+        align-items: center;
+        margin-left: 3em;
+    }
+
+    .logo img {
+        width: 100%;
+        z-index: -1;
+    }
+
+    a {
+        color: rgb(74, 82, 72) !important;
+        text-decoration: none;
+    }
+
+    ul {
+        list-style-type: none;
+    }
+    
+    .desktop-nav{
+        display: grid;
+        align-content: center;
+        margin-right: 3em;
+        grid-auto-flow: row;
+        justify-content: end;
+    }
+    
+    .links-list{
+        display: grid;
+        grid-auto-flow: column;
+        justify-content: end;
+        text-align: center;
+        grid-template-columns: repeat(2, 100px);
+    }
+    
+    .link{
+        color: rgb(74, 82, 72);
+        font-size: 20px;
+        padding: 4px;
+    }
+    
+    .link.four{
+        background: rgba(0, 0, 0, 0);
+        border: 1px solid rgb(205, 205, 203);
+        border-radius: 50px;
+        padding: 4px;
+    }
+    
+    .greet-list{
+        display: grid;
+        grid-auto-flow: column;
+        justify-content: end;
+        text-align: right;
+        grid-template-columns: 200px 40px;
+        font-size: 22px;
+    }
+    
+    .greet{
+        padding: 5px;  
+    }
+    
+    .svg-icon{
+        width: 25px;
+        height: 25px;
+    }
+    
+    .dropbtn {
+        padding: 5px;
+        cursor: pointer;
+        justify-content: center;
+        display: grid;
+    }
+    
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+    
+    .dropdown-content {
+        position: absolute;
+        left: -120px;
+        background-color: #f1f1f1;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+        text-align: center;
+        display: none;
+    }
+    
+    .dropdown-content li{
+        color: black;
+        padding: 6px;
+        text-decoration: none;
+        display: block;
+        font-size: 20px;
+        cursor: pointer;
+    }
+    
+    .dropdown-content li:hover {background-color: #ddd;}
+    
+    .dropdown:hover .dropdown-content {display: block;}
+    
+    .dropdown:hover .dropbtn {background-color: rgb(244, 244, 244);}
+
+    /* main content */
+    main {
+        margin-top: 5em;
+    }
+
+    .offer {
+        background: rgb(14, 13, 38);
+    }
+
+    .offer-container {
+        display: grid;
+        margin: 0 60px 0px 60px;
+        grid-auto-flow: column;
+        overflow-x: scroll;
+        padding: 60px 0px;
+    }
+
+    .offer-card {
+        width: 250px;
+        justify-self: center;
+    }
+
+    .offer-card>img {
+        width: 100%;
+    }
+
+    .mess {
+        margin: 20px 70px 70px 70px;
+    }
+
+    .mess>h1 {
+        text-align: center;
+        font-size: 40px;
+        color: black !important;
+    }
+
+    .mess-container {
+        display: grid;
+        grid-auto-flow: row;
+        margin-top: 2em;
+        justify-content: center;
+    }
+
+    .mess-card {
+        display: grid;
+        grid-auto-flow: row;
+        grid-template-rows: 200px 1fr 35px;
+        width: 400px;
+        padding: 8px 12px;
+        background-color: rgb(255, 255, 255);
+        border: 1px solid rgb(255, 255, 255);
+        transition: all 0.3s ease;
+        margin-bottom: 3em;
+        border-radius: 2px;
+    }
+
+    .mess-card:hover {
+        border-color: rgb(211, 213, 223);
+        box-shadow: 0 6px 11px 6px rgba(218, 220, 230, .6);
+    }
+
+    .mess-card .mess-info {
+        padding: 1px;
+        margin-top: 10px;
+        position: relative;
+    }
+
+    .mess-card .img {
+        width: 100%;
+        border-radius: 4px;
+    }
+
+    .mess-card p.address {
+        margin-top: 5px;
+        margin-bottom: 10px;
+    }
+
+    h1.mess-name {
+        font-size: 30px;
+        color: rgb(65, 43, 43);
+    }
+
+    p.type {
+        font-size: 13px;
+        font-weight: lighter;
+        margin-top: -3px;
+        color: rgb(158, 159, 157);
+    }
+
+    .rating {
+        position: absolute;
+        background: rgb(71, 225, 71);
+        right: 10px;
+        top: 12px;
+        padding: 3px 5px;
+        border-radius: 2px;
+        color: white;
+    }
+
+    .rating span {
+        position: relative;
+        top: 3px;
+    }
+
+    .price {
+        background: rgba(255, 165, 0, 0);
+        margin-top: -4px;
+        border-top: .3px solid rgb(209, 204, 204);
+        padding: 10px 0 0 0;
+        color: rgb(46, 47, 202);
+    }
+
+    #bottom {
+        display: none;
+    }
+
+    @media only screen and (max-width: 768px) {
+        #top {
+            position: relative;
+        }
+
+        main {
+            margin-top: 2em;
+        }
+
+        .navbar .logo {
+            grid-template-columns: 45px auto !important;
+            margin-left: 1em !important;
+        }
+
+        .offer-container {
+            margin: 0px 0px 0px 15px;
+            grid-gap: 20px;
+        }
+
+        .mess {
+            margin: 20px 7px 0 7px;
+        }
+
+        .mess-card {
+            width: auto;
+            grid-template-rows: 200px 2fr 35px;
+        }
+
+        /*mobile bottom nav*/
+        #bottom {
+            display: grid;
+            bottom: 0;
+            background-color: rgb(240, 238, 236);
+            position: fixed;
+            width: 100%;
+            border-top: 1px solid rgb(230, 226, 226);
+            left: 0;
+            z-index: 100;
+        }
+
+        .navbar-bottom {
+            display: grid;
+            grid-auto-flow: column;
+            height: 55px;
+            align-items: center;
+        }
+
+        .navbar-bottom a {
+            justify-self: center;
+        }
+
+
+        .icon.active path {
+            fill: rgb(86, 190, 18);
+        }
+    }
+</style>
+<header id="top">
+    <nav class="navbar">
+        <a href="/" style="align-self: center;">
+            <div class="logo">
+                <img src="static/img/logo/logo1.png" alt="brand logo">
+                <h1 class="name">Feasta</h1>
+            </div>
+        </a>
+
+        <div class="desktop-nav left">
+            <ul class="links-list" ng-hide="isAuthenticated">
+                <li class="link three">
+                    <a href="/login">
+                        Login
+                    </a>
+                </li>
+                <li class="link four">
+                    <a href="/signup">
+                        Signup
+                    </a>
+                </li>
+            </ul>
+            <ul class="greet-list" ng-show="isAuthenticated">
+                <li class="greet">
+                    Hii, FeastaUser
+                </li>
+                <li class="dropdown">
+                    <div class="dropbtn">
+                        <svg class="svg-icon" viewBox="0 0 20 20">
+                            <path d="M13.962,8.885l-3.736,3.739c-0.086,0.086-0.201,0.13-0.314,0.13S9.686,12.71,9.6,12.624l-3.562-3.56C5.863,8.892,5.863,8.611,6.036,8.438c0.175-0.173,0.454-0.173,0.626,0l3.25,3.247l3.426-3.424c0.173-0.172,0.451-0.172,0.624,0C14.137,8.434,14.137,8.712,13.962,8.885 M18.406,10c0,4.644-3.763,8.406-8.406,8.406S1.594,14.644,1.594,10S5.356,1.594,10,1.594S18.406,5.356,18.406,10 M17.521,10c0-4.148-3.373-7.521-7.521-7.521c-4.148,0-7.521,3.374-7.521,7.521c0,4.147,3.374,7.521,7.521,7.521C14.148,17.521,17.521,14.147,17.521,10"></path>
+                        </svg>
+                    </div>
+                    <ul class="dropdown-content">
+                        <li ng-click="logout()">
+                            Logout
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<header id="bottom">
+    <nav class="navbar-bottom">
+        <a href="/home/">
+            <div class="icon active">
+                <svg width="30" height="30" viewBox="0 0 24 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M9.49719 20.1594V13.9094H14.4972V20.1594C14.4972 20.8469 15.0597 21.4094 15.7472 21.4094H19.4972C20.1847 21.4094 20.7472 20.8469 20.7472 20.1594V11.4094H22.8722C23.4472 11.4094 23.7222 10.6969 23.2847 10.3219L12.8347 0.909372C12.3597 0.484372 11.6347 0.484372 11.1597 0.909372L0.709693 10.3219C0.284693 10.6969 0.547193 11.4094 1.12219 11.4094H3.24719V20.1594C3.24719 20.8469 3.80969 21.4094 4.49719 21.4094H8.24719C8.93469 21.4094 9.49719 20.8469 9.49719 20.1594Z"
+                        fill="#BABABA" />
+                </svg>
+
+            </div>
+        </a>
+        <a href="/favorite/">
+            <div class="icon">
+                <svg width="30" height="30" viewBox="0 0 26 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M14.6872 22.384C13.7372 23.2465 12.2747 23.2465 11.3247 22.3715L11.1872 22.2465C4.62466 16.309 0.337157 12.4215 0.499657 7.57151C0.574657 5.44651 1.66216 3.40901 3.42466 2.20901C6.72466 -0.0409944 10.7997 1.00901 12.9997 3.58401C15.1997 1.00901 19.2747 -0.0534943 22.5747 2.20901C24.3372 3.40901 25.4247 5.44651 25.4997 7.57151C25.6747 12.4215 21.3747 16.309 14.8122 22.2715L14.6872 22.384Z"
+                        fill="black" fill-opacity="0.54" />
+                </svg>
+
+            </div>
+        </a>
+        <a href="/account/">
+            <div class="icon">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M15 5C15 7.7625 12.7625 10 10 10C7.2375 10 5 7.7625 5 5C5 2.2375 7.2375 0 10 0C12.7625 0 15 2.2375 15 5ZM0 17.5C0 14.175 6.6625 12.5 10 12.5C13.3375 12.5 20 14.175 20 17.5V18.75C20 19.4375 19.4375 20 18.75 20H1.25C0.5625 20 0 19.4375 0 18.75V17.5Z"
+                        fill="black" fill-opacity="0.54" />
+                </svg>
+
+            </div>
+        </a>
+
+    </nav>
+</header>
+<main>
+    <section class="offer">
+        <div class="offer-container">
+            <div class="offer-card">
+                <img src="static/img/offers/cwkxw2ugoqnao9gu5mta.jpg" alt="offer">
+            </div>
+            <div class="offer-card">
+                <img src="static/img/offers/hj9juelh1mxlrhappx6a.jpg" alt="offer">
+            </div>
+            <div class="offer-card">
+                <img src="static/img/offers/v3wij0yymhoyanqsyd2a.jpg" alt="offer">
+            </div>
+            <div class="offer-card">
+                <img src="static/img/offers/xe1gn45ahtoiqty5g9b7.jpg" alt="offer">
+            </div>
+        </div>
+    </section>
+
+
+    <section class="mess">
+        <h1>Explore Mess</h1>
+        <div class="mess-container">
+
+            <div ng-repeat="mess in Mess">
+                <a href="/menu/?messid={{mess.id}}">
+                    <div class="mess-card">
+                        <div class="img"
+                            style="background-image:url(static/img/mess/test.jpg);background-repeat: no-repeat; background-size: cover;">
+                        </div>
+                        <div class="id" ng-model="messid" data-id="{{mess.id}}" style="display: none;"></div>
+                        <span class="mess-info">
+                            <h1 class="mess-name">{{mess.mess_name}}</h1>
+                            <p class="type">{{mess.type}}</p>
+                            <p class="address">{{mess.address}}</p>
+                            <div class="rating">
+                                {{mess.rating}}
+                                <span>
+                                    <svg viewBox="0 0 24 24" fill="#767676" aria-hidden="true" height="16" width="16"
+                                        style="flex-shrink: 0;">
+                                        <title></title>
+                                        <path
+                                            d="M12.911 2.588a1 1 0 0 0-1.822 0l-2.273 5.03-5.486.607a1 1 0 0 0-.563 1.733l4.081 3.716-1.117 5.405a1 1 0 0 0 1.474 1.07L12 17.418l4.795 2.733a1 1 0 0 0 1.474-1.071l-1.117-5.405 4.08-3.716a1 1 0 0 0-.563-1.733l-5.485-.607-2.273-5.03z"
+                                            fill="#ffffff"></path>
+                                    </svg>
+                                </span>
+                            </div>
+                        </span>
+                        <span class="price">
+                            &#x20b9; {{mess.one_time}}/Per Person
+                        </span>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+    </section>
+</main>
