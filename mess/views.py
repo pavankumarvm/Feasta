@@ -28,10 +28,11 @@ class MessApiView(viewsets.ModelViewSet):
     def post(self, request):
         # method: POST
         # Add details about Mess
-        parsers_class = (FileUploadParser,)
+        # parsers_class = (FileUploadParser,)
 
-        file = request.FILES["profile_img"]
-        print(file)
+        # file = request.FILES["profile_img"]
+        # print(file)
+        
         serializer = MessSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()

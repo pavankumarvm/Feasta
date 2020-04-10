@@ -58,18 +58,39 @@ feasta.controller("registerUser", ['$location', '$http', '$scope', 'Authenticati
                 })
             }
             else if(vm.is_messowner){
-                $http.post('api/v1/get-messowner/',{
-                    user:vm.username,
+                vm.opening_time = $("#opening_time").get(0).value;
+                vm.closing_time = $("#closing_time").get(0).value;
+                $http.post('api/v1/get-mess/',{
                     mess_name:vm.mess_name,
+                    food_type:vm.food_type,
+                    typeof_mess:vm.typeof_mess,
                     address:vm.address,
+                    opening_time:vm.opening_time,
+                    closing_time:vm.closing_time,
+                    one_time:vm.one_time,
+                    monthly:vm.monthly,
                 })
                 .success(function(data){
-                    console.log("Messowner Registered Successfully");
+                    console.log("Mess Registered Successfully");
                     console.log(data);
-                    $location.path('/login');
+                    vm.mess_id = data['id'];
+                    console.log(vm.mess_id);
+                    $http.post('api/v1/get-messowner/',{
+                        user:vm.username,
+                        mess_id:vm.mess_id,
+                    })
+                    .success(function(data){
+                        console.log("Messowner Registered Successfully");
+                        console.log(data);
+                        $location.path('/login');
+                    })
+                    .error(function(data){
+                        console.error("Epic Failure in Messowner Registration.");
+                        console.log(data);
+                    })
                 })
                 .error(function(data){
-                    console.error("Epic Failure in Messowner Registration.");
+                    console.log("Epic Failure in Mess Registration.")
                     console.log(data);
                 })
             }

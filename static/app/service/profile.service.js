@@ -9,6 +9,7 @@ feasta.service('Profile', ['$http', function($http){
         update: update,
         delete: destroy,
         getMessowner: getMessowner,
+        getMessDetails: getMessDetails,
         getConsumer: getConsumer,
     }
     return Profile;
@@ -36,6 +37,12 @@ feasta.service('Profile', ['$http', function($http){
 
     function getMessowner(username){
         return $http.get("api/v1/get-messowner/" + username + "/");
+    }
+
+    //********************** Mess Details ************************//
+    
+    function getMessDetails(mess_id){
+        return $http.get("api/v1/get-mess/"+ mess_id + "/")
     }
 
     //********************** Consumer Details ********************//

@@ -3,7 +3,7 @@ feasta Mess controller, use to display
 all mess
 */
 
-feasta.controller('getMessController', ['$scope', '$http', '$location', 'Authentication', function ($scope, $http, $location, Authentication) {
+feasta.controller('getMess', ['$scope', '$http', '$location', 'Authentication', function ($scope, $http, $location, Authentication) {
     $scope.Mess = {};
 
     $scope.isAuthenticated = Authentication.isAuthenticated();

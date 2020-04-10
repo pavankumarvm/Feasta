@@ -2,7 +2,7 @@
 feasta menu controller
 */
 
-feasta.controller("getMenuController", ['$scope', '$http', '$location', function ($scope, $http, $location) {
+feasta.controller("getMenu", ['$scope', '$http', '$location', function ($scope, $http, $location) {
 
     var id = $location.search().messid; // get mess_id from url
 

@@ -2,11 +2,13 @@
     Profile Controller
 */
 
-feasta.controller('getProfile',['$scope', '$http', '$location', '$routeParams', 'Profile', 'Authentication', function($scope, $http ,$location, $routeParams, Profile, Authentication){
+feasta.controller('getProfile', ['$scope', '$location', '$routeParams', 'Profile', 'Menu', 'Authentication', function($scope, $location, $routeParams, Profile, Menu, Authentication){
     $scope.Profile = {};
     var vm = this;
     vm.logout = logout;
-
+    $(".remove--items").hide();
+    $(".menu--added").hide();
+    var mess_id;
     if_active();
 
     function if_active(){
@@ -17,28 +19,43 @@ feasta.controller('getProfile',['$scope', '$http', '$location', '$routeParams', 
         function profileSuccessFn(data, status, headers, config){
             $scope.Profile = data.data;
             if($scope.Profile.is_messowner == true){
-                Profile.getMessowner(username).then(detailSuccessFn, detailErrorFn);
+                Profile.getMessowner(username).then(SuccessFn, ErrorFn);
             }
             else if($scope.Profile.is_consumer == true){
-                Profile.getConsumer(username).then(detailSuccessFn, detailErrorFn);
+                Profile.getConsumer(username).then(SuccessFn, ErrorFn);
+            }
+
+            function SuccessFn(data, status, headers, config){
+                var object = angular.extend({}, data.data, $scope.Profile);
+                $scope.Profile = object;
+                // console.log(object);
+                mess_id = object["mess_id"];
+                Profile.getMessDetails(mess_id).then(detailSuccessFn, detailErrorFn);
+            }
+
+            function ErrorFn(data, status, headers, config){
+                console.error("Epic Failure");
+                console.log(data);
             }
 
             function detailSuccessFn(data, status, headers, config){
                 var object = angular.extend({}, data.data, $scope.Profile);
                 $scope.Profile = object;
+                // console.log(object);
             }
 
             function detailErrorFn(data, status, headers, config){
                 console.error("Epic Failure");
                 console.log(data);
             }
+
         }
 
         function profileErrorFn(data, status, headers, config){
-            $location.path('/');
             alert("Sorry, there was problem while loading the Profile." + '\n' + 
                     "Try, Logging in again.");
             Authentication.logout();
+            $location.path('/');
         }
     }
 
@@ -97,6 +114,35 @@ feasta.controller('getProfile',['$scope', '$http', '$location', '$routeParams', 
     }
 
     $scope.updateProfile = function(){
-        Console.log("Updating Profile");
+        console.log("Updating Profile");
+    }
+
+
+    //********************** Add Menu ********************//
+
+    $scope.removeItem = function(i){
+        var item = $("#item" + i );
+        item.remove();
+        if($(".list-item").length != 0){
+            $(".remove--items").show();
+        }
+        else{
+            $(".remove--items").hide();
+        }
+    }
+
+    $scope.removeAllItems = function(){
+        $(".items--list").empty();
+        $(".remove--items").hide();
+    }
+
+    $scope.addMenu = function($http){
+        var inputs = $(".item-input");
+        for(var i=0;i<inputs.length;i++){
+            var item = inputs.get(i).value;
+            // console.log(item + "/" + mess_id);
+            Menu.addItem(item, mess_id);
+        }
+        $(".menu--added").show();
     }
 }])

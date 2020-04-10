@@ -488,6 +488,28 @@
         font-size: 20px;
         padding: 3px;
     }
+    .food--options{
+        font-size: 20px;
+        padding: 3px;
+    }
+    .gender--options>label, .food--options>label{
+        font-size: 16px;
+        padding: 3px 5px;
+    }
+    
+    .price--options,.timings{
+        display: grid;
+        grid-auto-flow: column;
+        align-items: center;
+        grid-template-columns: 18% 32% 18% 32%;
+    }
+    .price--options>label,.timings>label{
+        font-size: 16px;
+        padding: 3px 5px;
+    }
+    .price--options>.detail-input,.timings>.detail-input{
+        min-width: 170px;
+    }
     .hide{
         display: none;
     }
@@ -820,7 +842,7 @@
                     <div class="consumer hide">
                         <div class="detail--group">
                             <label for="college">Gender:</label>
-                            <div class="gender--options">
+                            <div class="radio--options">
                                 <label for="male">
                                     <input type="radio" ng-model="vm.gender" value="Male">
                                     Male
@@ -851,20 +873,49 @@
                             <input type="text" class="detail-input" name="messname" ng-model="vm.mess_name">
                         </div>
                         <div class="detail--group">
+                            <label for="typeof_mess">Mess For:</label>
+                            <select class="detail-input" name="typeof_mess" ng-model="vm.typeof_mess">
+                                <option value="Boys">Boys</option>
+                                <option value="Girls">Girls</option>
+                                <option value="Both">Both</option>
+                            </select>
+                        </div>
+                        <div class="detail--group">
+                            <label for="food_type">Food-type:</label>
+                            <div class="food--options" name="food_type">
+                                <label for="veg">
+                                    <input type="radio" name="veg" ng-model="vm.food_type" value="Veg">
+                                    Pure Veg
+                                </label>
+                                <label for="nonveg">
+                                    <input type="radio" name="nonveg" ng-model="vm.food_type" value="Non-veg">
+                                    Veg & Non-Veg
+                                </label>
+                            </div>
+                        </div>
+                        <div class="detail--group">
                             <label for="address">Address:</label>
                             <textarea type="text" class="detail-input" name="address" ng-model="vm.address"></textarea>
                         </div>
+                        <div class="detail--group">
+                            <label for="time">Timing:</label>
+                            <div class="timings">
+                                <label for="time1">Opening Time:</label>
+                                <input type="time" class="detail-input" name="time1" id="opening_time"/>
+                                <label for="time2">Closing Time:</label>
+                                <input type="time" class="detail-input" name="time2" id="closing_time"/>
+                            </div>
+                        </div>
+                        <div class="detail--group">
+                            <label for="price">Price:</label>
+                            <div class="price--options">
+                                <label for="one_time">One Time:</label>
+                                <input type="number" class="detail-input" name="one_time" ng-model="vm.one_time">
+                                <label for="monthly">Monthly:</label>
+                                <input type="number" class="detail-input" name="monthly" ng-model="vm.monthly">
+                            </div>
+                        </div>
                     </div>
-                    <!-- <div id="3" class="arrow-btn">
-                        <svg class="arrow" version="1.0" xmlns="http://www.w3.org/2000/svg" width="225.000000pt" height="225.000000pt" viewBox="0 0 225.000000 225.000000" preserveAspectRatio="xMidYMid meet">
-                            <g transform="translate(0.000000,225.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
-                                <path d="M654 2137 c-40 -34 -72 -66 -72 -72 0 -8 195 -233 750 -864 l66 -76
-                                -22 -25 c-13 -14 -186 -212 -386 -440 -200 -228 -376 -429 -391 -445 l-29 -31
-                                76 -64 c42 -36 80 -65 84 -65 4 0 219 241 478 535 l470 535 -57 65 c-32 36
-                                -243 276 -470 535 -227 259 -416 471 -419 472 -4 1 -39 -26 -78 -60z"/>
-                            </g>
-                        </svg>
-                    </div> -->
                 </div>
                 <div class="proceed--login" ng-click="vm.proceed()">
                     <span class="text">
