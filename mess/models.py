@@ -1,6 +1,8 @@
 from django.db import models
 import uuid
 
+MESS_TYPES = (('Boys', 'Boys'), ('Girls', 'Girls'), ('Both', 'Both'))
+FOOD_TYPES = (('Veg', 'Veg'), ('Non-veg', 'Non-veg'),)
 
 class Mess(models.Model):
     """
@@ -9,18 +11,20 @@ class Mess(models.Model):
     db_table = "mess"
 
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    mess_name = models.CharField(max_length=200, null=False)
-    timing = models.TimeField(auto_now_add=False, blank=False)
-    # start_end_timing = models.TimeField(auto_now_add=False, blank=False)
+    mess_name = models.CharField(max_length=200, unique=True, blank=False ,null=False)
     longitude = models.CharField(max_length=150, blank=True)
     latitude = models.CharField(max_length=150, blank=True)
     address = models.CharField(max_length=300, blank=False)
+    opening_time = models.TimeField(auto_now_add=False, blank=False)
+    closing_time = models.TimeField(auto_now_add=False, blank=False)
 
-    profile_img = models.FileField(blank=True)
-    rating = models.CharField(max_length=10)
+    # profile_img = models.ImageField(blank=True, null=True)
+    rating = models.CharField(max_length=10,default=3)
     review = models.CharField(max_length=1000, blank=True)
-    phone_num = models.CharField(max_length=400)
-    type = models.CharField(max_length=100)  # veg or non-veg
+    # phone_num = models.CharField(max_length=400)
+    # boys or girls or both
+    typeof_mess = models.CharField(max_length=10, choices=MESS_TYPES, default=None, blank=False,null=False)
+    food_type = models.CharField(max_length=100, choices=FOOD_TYPES, default='Veg', blank=False,null=False)  # veg or non-veg
 
     one_time = models.IntegerField(blank=False)
     monthly = models.IntegerField(blank=False)

@@ -3,6 +3,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractBaseUser
 from django.contrib.auth.models import PermissionsMixin
 from .managers import FeastaUserManager
+from mess.models import Mess
 
 # Create your models here.
 
@@ -42,11 +43,13 @@ class FeastaUser(AbstractBaseUser, PermissionsMixin):
 
 class MessOwner(models.Model):
     user = models.OneToOneField(FeastaUser, on_delete=models.CASCADE, primary_key=True)
-    mess_name = models.CharField(max_length=30, blank=True)
-    address = models.CharField(max_length=300, blank=True)
+    # mess_name = models.CharField(max_length=30, blank=True)
+    # address = models.CharField(max_length=300, blank=True)
+
+    mess_id = models.ForeignKey(Mess, on_delete=models.CASCADE, to_field='id')
 
     def __str__(self):
-        return self.mess_name
+        return self.mess_id.mess_name
 
     def get_username(self):
         return self.user.username

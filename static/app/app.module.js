@@ -13,11 +13,11 @@ feasta.config(['$routeProvider', '$locationProvider', function ($routeProvider, 
         .when('/home/', {
             title: 'Home',
             templateUrl: "static/app/app-template/home.html",
-            controller: "getMessController"
+            controller: "getMess"
         })
         .when('/menu/', {
             templateUrl: "static/app/app-template/menu.html",
-            controller: "getMenuController"
+            controller: "getMenu"
         })
         .when('/profile/:username',{
             templateUrl: "static/app/app-template/profile.html",

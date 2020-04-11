@@ -9,7 +9,6 @@ urlpatterns = [
         'get': 'retrieve',
         'put': 'update',
         'delete': 'destroy',
-
     })),
     path('get-menu/', MenuApiView.as_view({'get': 'get', 'post': 'post'}), name ="menu-api-view"),
     path('get-menu/<str:menu_id>/', MenuApiView.as_view({
