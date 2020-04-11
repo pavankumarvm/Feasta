@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from mess.models import Mess, Menu
+from mess.models import Mess, Menu, Offer
 
 
 class MessSerializer(serializers.ModelSerializer):
@@ -41,3 +41,12 @@ class MenuSerializer(serializers.ModelSerializer):
         model = Menu
         fields = ('item', 'menu_id', 'mess_id', 'address', 'timing')
 
+
+class OfferSerializer(serializers.ModelSerializer) :
+    """
+    Serializer for offers
+
+    """
+    class Meta:
+        model = Offer
+        fields = "__all__"

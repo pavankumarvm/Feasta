@@ -1,8 +1,8 @@
 from rest_framework import status
 from rest_framework.parsers import FileUploadParser
 from rest_framework.response import Response
-from mess.serializer import MessSerializer, MenuSerializer
-from mess.models import Mess, Menu
+from mess.serializer import MessSerializer, MenuSerializer, OfferSerializer
+from mess.models import Mess, Menu, Offer
 from django.http import Http404
 from rest_framework import viewsets
 from django.views.generic import TemplateView
@@ -89,7 +89,7 @@ class MenuApiView(viewsets.ModelViewSet):
         # Return mess menu
         queryset = Menu.objects.all()
         serializer = MenuSerializer(queryset, many=True)
-        return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response(serializer.data)
 
     def post(self, request):
         # Method: POST
@@ -140,3 +140,50 @@ class MenuApiView(viewsets.ModelViewSet):
             return Menu.objects.get(menu_id=menu_id)
         except Menu.DoesNotExist:
             raise Http404
+
+
+class OfferApiView(viewsets.ModelViewSet) :
+    queryset = Offer.objects
+    serializer_class = OfferSerializer
+
+    def get(self,request):
+        queryset = Offer.objects.all()
+        serializer = OfferSerializer(queryset, many = True)
+        return Response(serializer.data, status = status.HTTP_204_NO_CONTENT)
+    
+    def post(self, request):
+        parsers_class = (FileUploadParser, )
+
+        serializer = OfferSerializer(data = request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(data= {'status' : 'Offer Added'}, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def retrieve(self, request, id):
+        queryset = self.get_detail(id)
+        serializer = OfferSerializer(queryset)
+        return Response(serializer.data)
+    
+    def update(self,request,id):
+        queryset = self.get_detail(id)
+        serializer = OfferSerializer(queryset, data = request.data, partial = True)
+
+        if serializer.is_valid():
+            serializer.save()
+            return Response(data = {'status' : "Offer Updated"}, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+    def destroy(self,request,id):
+        try:
+            queryset = self.get_detail(id)
+            queryset.delete()
+            return Response(data= {'status' : "Offer Deleted"}, status=status.HTTP_200_OK)
+        except:
+            return Response(data={'error' : "Given Data is INVALID!!!"}, status=status.HTTP_400_BAD_REQUEST)
+
+    def get_detail(self, id):
+        try:
+            return Offer.objects.get(id = id)
+        except:
+            return Http404

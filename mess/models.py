@@ -53,9 +53,11 @@ class Offer(models.Model):
     """
     Get Offers available
     """
-    offer = models.CharField(max_length=100)
-    offer_img = models.FileField()
+    offer = models.PositiveIntegerField()
+    offer_img = models.FileField(blank = True)
+    valid_till = models.DateField( )
     coupon_code = models.CharField(max_length=30)
+    price = models.PositiveIntegerField()
     # valid_till = models.DateTimeField(default=0)
 #
 # class Feedback(models.Model):

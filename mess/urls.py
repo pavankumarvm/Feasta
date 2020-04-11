@@ -1,5 +1,5 @@
 from django.urls import path
-from mess.views import MessApiView, MenuApiView
+from mess.views import MessApiView, MenuApiView, OfferApiView
 from .views import HomePageView
 
 urlpatterns = [
@@ -16,5 +16,11 @@ urlpatterns = [
         'get': 'get_data',
         'delete': 'destroy',
         'put': 'update'
+    })),
+    path('get-offers/', OfferApiView.as_view({'get' : 'get', 'post' : 'post'}), name= "offer-api-view"),
+    path('get-offers/<str:id>/', OfferApiView.as_view({
+        'get' : 'retrieve',
+        'put': 'update',
+        'delete' : 'destroy',
     }))
 ]
