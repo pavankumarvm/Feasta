@@ -57,11 +57,19 @@ class Offer(models.Model):
     """
     Get Offers available
     """
+    #Foreign Key Fields
+    mess_id = models.ForeignKey(Mess, on_delete=models.CASCADE, to_field='id')
+    
+    #Key Fields
+    item = models.CharField(max_length = 200, blank = False)
     offer = models.PositiveIntegerField()
-    offer_img = models.FileField(blank = True)
-    valid_till = models.DateField( )
-    coupon_code = models.CharField(max_length=30)
+    item_img = models.FileField(blank = True)
+    valid_till = models.DateField(blank = False)
+    coupon_code = models.CharField(max_length=30, blank = True)
     price = models.PositiveIntegerField()
+
+    def __str__(self):
+        return self.item
     # valid_till = models.DateTimeField(default=0)
 #
 # class Feedback(models.Model):
