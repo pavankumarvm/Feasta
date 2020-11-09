@@ -1,14 +1,20 @@
-* {
-    margin: 0px;
-    padding: 0px;
+*{
+    margin:0px;
+    padding:0;
+}
+html,
+body{
+    height:100%;
+    width:100%;
+    overflow-x:hidden;
+    background-size: cover;
+    color:black;
 }
 
-a {
+a{
     text-decoration: none;
-}
-
-body {
-    font-family: Poppins;
+    cursor: pointer;
+    color:black;
 }
 
 .page{

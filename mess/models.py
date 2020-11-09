@@ -61,7 +61,7 @@ class Offer(models.Model):
     mess_id = models.ForeignKey(Mess, on_delete=models.CASCADE, to_field='id')
     
     #Key Fields
-    item = models.CharField(max_length = 200, blank = False)
+    item = models.CharField(max_length = 200, blank = False, null=False)
     offer = models.PositiveIntegerField()
     item_img = models.FileField(blank = True)
     valid_till = models.DateField(blank = False)

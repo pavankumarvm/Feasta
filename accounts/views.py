@@ -34,14 +34,14 @@ class FeastaUserViewSet(viewsets.ModelViewSet):
     serializer_class = FeastaUserSerializer
 
     """
-        This view will return data about all Mess Owners
+        This view will return data about all Users
     """
 
     def create(self, request):
         serializer = self.serializer_class(data=request.data)
 
         if serializer.is_valid():
-            Feasta.objects.create_user(**serializer.validated_data)
+            FeastaUser.objects.create_user(**serializer.validated_data)
 
             return Response(serializer.validated_data, status=status.HTTP_201_CREATED)
 
